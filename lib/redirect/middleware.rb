@@ -17,7 +17,6 @@ module Redirect
 
     def match?(request_path)
       Redirect::Rails.paths.map do |path, redirect_path|
-        File.write('response.txt', redirect_path)
         if Regexp.new(path).match(request_path)
           return redirect_to(redirect_path)
         end
