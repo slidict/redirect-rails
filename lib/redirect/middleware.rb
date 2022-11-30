@@ -20,7 +20,7 @@ module Redirect
         if Regexp.new(path).match(request_path)
           return redirect_to(redirect_path)
         end
-      end
+      end if Redirect::Rails.paths.
       return nil
     end
 
