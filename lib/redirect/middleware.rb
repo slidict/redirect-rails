@@ -16,19 +16,19 @@ module Redirect
     end
 
     def match?(request_path)
+      return if Redirect::Rails.paths
+
       Redirect::Rails.paths.map do |path, redirect_path|
-        if Regexp.new(path).match(request_path)
-          return redirect_to(redirect_path)
-        end
-      end if Redirect::Rails.paths
-      return nil
+        return redirect_to(ERB.new(redirect_path).result(binding)) if Regexp.new(path).match(request_path)
+      end
     end
 
     def redirect_to(uri)
-      headers = { 'Location'      => uri,
-                  'Content-Type'  => @request['Content-Type'],
-                  'Pragma'        => 'no-cache',
-                  'Cache-Control' => 'no-cache; max-age=0' }
+      headers = { "Location": uri,
+                  "Content-Type": @request["Content-Type"],
+                  "Pragma": "no-cache",
+                  "Cache-Control": "no-cache; max-age=0"
+                }
       [302, headers, [redirect_message(uri)]]
     end
 

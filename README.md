@@ -19,9 +19,21 @@ $ bin/rails redirect:install
 
 List the correspondence of the paths you want to redirect in config/redirect.yml."
 
+## paths
+
+In the `config/redirect.yml` file, you can write redirect settings as follows.
+
+```
+paths:
+  /regexp/([^/]+): /redirected/regexp/<%= $1 %>
+  /static/failuer: /static/true
+```
+
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/slidict/redirect-rails. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/slidict/redirect-rails/blob/main/CODE_OF_CONDUCT.md).
+- No test code yet. Pull requests are welcome.
+
+-Bug reports and pull requests are welcome on GitHub at https://github.com/slidict/redirect-rails. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/slidict/redirect-rails/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
