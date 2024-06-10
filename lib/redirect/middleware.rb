@@ -16,7 +16,7 @@ module Redirect
     end
 
     def match?(request_path)
-      return if Redirect::Rails.paths
+      return unless Redirect::Rails.paths
 
       Redirect::Rails.paths.map do |path, redirect_path|
         return redirect_to(ERB.new(redirect_path).result(binding)) if Regexp.new(path).match(request_path)
