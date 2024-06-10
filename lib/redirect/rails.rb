@@ -21,7 +21,7 @@ module Redirect
       end
 
       def paths
-        YAML.load(ERB.new(File.read(yaml_name)).result)['paths']
+        YAML.safe_load(File.read(yaml_name))['paths']
       end
 
       def original_yaml_name

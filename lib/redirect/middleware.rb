@@ -8,19 +8,19 @@ module Redirect
 
     def call(env)
       @request = Rack::Request.new(env)
-      if response = match?(@request.path)
-        response
+      if url = redirect_url(@request.path)
+        redirect_to(url)
       else
         @app.call(env)
       end
     end
 
-    def match?(request_path)
+    def redirect_url(request_path)
       return unless Redirect::Rails.paths
 
       Redirect::Rails.paths.map do |path, redirect_path|
-        return redirect_to(ERB.new(redirect_path).result(binding)) if Regexp.new(path).match(request_path)
-      end
+        return ERB.new(redirect_path).result(binding) if Regexp.new(path).match(request_path)
+      end.first
     end
 
     def redirect_to(uri)
