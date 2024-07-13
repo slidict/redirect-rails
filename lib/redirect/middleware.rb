@@ -29,7 +29,7 @@ module Redirect
       return unless Redirect::Rails.hosts
 
       Redirect::Rails.hosts.map do |host, redirect_url|
-        return ERB.new(redirect_url).result(binding) if Regexp.new(host).match(request_url)
+        return ERB.new(redirect_url).result(binding) if Regexp.new(host).match(request_host)
       end.first
     end
 
