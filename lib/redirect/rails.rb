@@ -24,6 +24,10 @@ module Redirect
         YAML.safe_load(File.read(yaml_name))['paths']
       end
 
+      def hosts
+        YAML.safe_load(File.read(yaml_name))['hosts']
+      end
+
       def original_yaml_name
         "#{Redirect::Rails.root}/config/redirect.yml"
       end
