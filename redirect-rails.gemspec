@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "List the correspondence of the paths you want to redirect in config/redirect.yml."
   spec.homepage = "https://github.com/slidict/redirect-rails"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 3.2.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/slidict/redirect-rails"
