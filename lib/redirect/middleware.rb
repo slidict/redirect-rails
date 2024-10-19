@@ -36,9 +36,9 @@ module Redirect
 
     def redirect_to(uri)
       headers = { "Location": uri,
+                  "Content-Type": @request.content_type,
                   "Pragma": "no-cache",
                   "Cache-Control": "no-cache; max-age=0" }
-      headers["Content-Type"] = @request["Content-Type"] if @request.has_key?("Content-Type")
       [302, headers, [redirect_message(uri)]]
     end
 
