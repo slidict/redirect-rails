@@ -35,7 +35,7 @@ module Redirect
 
     def redirect_to(uri)
       headers = { "Location": uri,
-                  "Content-Type": @request["Content-Type"],
+                  "Content-Type": @request.dig("Content-Type"),
                   "Pragma": "no-cache",
                   "Cache-Control": "no-cache; max-age=0"
                 }
